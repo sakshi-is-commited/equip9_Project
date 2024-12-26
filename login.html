@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .login-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #c45bdc;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="mobile">Mobile Number</label>
+            <input type="text" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit">Login</button>
+            
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const loginData = {
+        mobile: document.getElementById('mobile').value,
+        password: document.getElementById('password').value,
+    };
+
+    try {
+        const response = await fetch('http://localhost:5000/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(loginData),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            alert(data.message); // Fix: Display the "message" property from the response
+            localStorage.setItem('token', data.token); // Save token for future requests
+            window.location.href = '/greeting.html'; // Redirect to greeting page
+        } else {
+            const errorData = await response.json();
+            alert('Error: ' + errorData.message); // Fix: Display the error message
+        }
+    } catch (err) {
+        console.error('Error during login:', err);
+        alert('An unexpected error occurred.');
+    }
+});
+
+    </script>
+</body>
+</html>

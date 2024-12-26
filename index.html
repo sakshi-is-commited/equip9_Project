@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Page</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="registration-container">
+    <h1>Registration</h1>
+    <form id="registrationForm">
+      <input type="text" name="firstName" id="firstName" placeholder="First Name" required />
+      <input type="text" name="lastName" id="lastName" placeholder="Last Name" required />
+      <input type="text" name="mobile" id="mobile" placeholder="Mobile Number" pattern="\d{10}" required />
+      <input type="password" name="password" id="password" placeholder="Password" required />
+      <button type="submit">Register</button>
+      <div class="social-login">
+        <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Faccounts.google.com%2F&followup=https%3A%2F%2Faccounts.google.com%2F&ifkv=AeZLP999DV2_XE2R0TnptpDTIp3iHv9avbctmBaayxnmQUT_w-HQ2m4DZ4CDv31fsbazG3T8C795qw&passive=1209600&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1927664632%3A1735229991500864&ddm=1" class="fa fa-google"></a>
+        <a href="https://www.facebook.com/login/" class="fa fa-facebook"></a>
+        <a href="https://account.apple.com/sign-in" class="fa fa-apple"></a>
+        
+      </div>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
